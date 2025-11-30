@@ -795,6 +795,53 @@ void buscarElemento(Clube *registros, int tamanho_registros){
     cout << endl << endl;
 }
 
+void salvarBinario(Clube *registros, int tamanho_registros){
+
+    ofstream bancoBinario("Banco de dados.bin", ios::binary); // Inicializa o arquivo binário
+
+    // Salva o cabeçalho exatamente igual ao CSV
+    string cabecalho = "identificador,nome_do_clube,pais_do_clube,ano_de_fundacao,descricao";
+    int tam = cabecalho.size();
+    bancoBinario.write(reinterpret_cast<char*>(&tam), sizeof(int));
+    bancoBinario.write(cabecalho.c_str(), tam);
+
+    // Salva a quantidade de registros
+    bancoBinario.write(reinterpret_cast<char*>(&tamanho_registros), sizeof(int));
+
+    // "for" para salvar todos os registros
+    for (int i = 0; i < tamanho_registros; i++) {
+        char virgula = ','; // Variavel utilizada para colocar vírgulas
+
+        // ID
+        bancoBinario.write(reinterpret_cast<char*>(&registros[i].id), sizeof(int));
+        bancoBinario.write(&virgula, 1);
+
+        // Nome
+        tam = registros[i].nome.size();
+        bancoBinario.write(reinterpret_cast<char*>(&tam), sizeof(int));
+        bancoBinario.write(registros[i].nome.c_str(), tam);
+        bancoBinario.write(&virgula, 1);
+
+        // País
+        tam = registros[i].pais.size();
+        bancoBinario.write(reinterpret_cast<char*>(&tam), sizeof(int));
+        bancoBinario.write(registros[i].pais.c_str(), tam);
+        bancoBinario.write(&virgula, 1);
+
+        // Ano de fundação
+        bancoBinario.write(reinterpret_cast<char*>(&registros[i].anoFundacao), sizeof(int));
+        bancoBinario.write(&virgula, 1);
+
+        // Descrição com aspas
+        string desc = "\"" + registros[i].descricao + "\"";
+        tam = desc.size();
+        bancoBinario.write(reinterpret_cast<char*>(&tam), sizeof(int));
+        bancoBinario.write(desc.c_str(), tam);
+    }
+
+    bancoBinario.close();
+}
+
 void ordenar_e_imprimir_elementos(Clube *registros, int tamanho_registros){
     cout << "                                  ================================= " << endl
          << "                                 |                                 |" << endl
@@ -1005,9 +1052,11 @@ int main() {
     cout << endl << "                                  ============================================ " << endl
                  << "                                 |                                            |" << endl
                  << "                                 |  Com todas as funções já finalizadas, seu  |" << endl
-                 << "                                 |  novo arquivo CSV será criado com suas     |" << endl
-                 << "                                 |  alterações realizadas, o nome do novo     |" << endl
-                 << "                                 |  arquivo é: ''New Banco de Dados.csv''     |" << endl
+                 << "                                 |  novo arquivo CSV e Binário serão criados  |" << endl
+                 << "                                 |  com suas alterações realizadas, os nomes  |" << endl
+                 << "                                 |  dos novos arquivos são:                   |" << endl
+                 << "                                 |    ''New Banco de Dados.csv''              |" << endl
+                 << "                                 |    ''Banco de dados.bin''                  |" << endl
                  << "                                 |                                            |" << endl
                  << "                                  ============================================ " << endl;
 
@@ -1026,6 +1075,8 @@ int main() {
     }
 
     newBanco.close();
+
+    salvarBinario(registros, tamanho_registros);
 
     return 0;
 }
