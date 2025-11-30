@@ -1013,19 +1013,19 @@ int main() {
 
     ofstream newBanco("New Banco de Dados.csv"); // Banco de Dados todo atualizado após as alterações
 
-    char aspas='"';
-
     newBanco << "identificador,nome_do_clube,pais_do_clube,ano_de_fundacao,descricao" << endl;
     newBanco << tamanho_registros << endl;
 
     for(int i=0; i<tamanho_registros; i++){
-        newBanco << registros[i].id << ","
-                 << registros[i].nome << ","
-                 << registros[i].pais << ","
-                 << registros[i].anoFundacao << ","
-                 << aspas << registros[i].descricao << aspas;
+        newBanco << registros[i].id << ','
+                 << registros[i].nome << ','
+                 << registros[i].pais << ','
+                 << registros[i].anoFundacao << ','
+                 << '"' << registros[i].descricao << '"';
         newBanco << endl;
     }
+
+    newBanco.close();
 
     return 0;
 }
