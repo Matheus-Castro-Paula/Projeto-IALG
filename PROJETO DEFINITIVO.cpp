@@ -346,7 +346,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
                 if(!igual){                               // Após a comparação do "for" secundário e ainda dentro do for principal,
                     new_registros[cont]=registros[i];     // esse "if" tem a função de escrever os registros que não serão excluidos
                                                           // no vetor de registros que será feito o redimensionamento
-                    new_registros[cont].id=cont+1;        // Essa linha serve para atualizar o ID
                     cont++;                               // Essa para aumentar o tamanho do novo vetor
                 }
             }
@@ -375,7 +374,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
                 if(!igual){                                 // Após a comparação do "for" secundário e ainda dentro do for principal,
                     new_registros[cont]=registros[i];       // esse "if" tem a função de escrever os registros que não serão excluidos
                                                             // no vetor de registros que será feito o redimensionamento
-                    new_registros[cont].id=cont+1;          // Essa linha serve para atualizar o ID
                     cont++;                                 // Essa para aumentar o tamanho do novo vetor
                 }
             }
@@ -402,7 +400,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
                 if(!igual){                            // Após a comparação do "for" secundário e ainda dentro do for principal,
                     new_registros[cont]=registros[i];  // esse "if" tem a função de escrever os registros que não serão excluidos
                                                        // no vetor de registros que será feito o redimensionamento
-                    new_registros[cont].id=cont+1;     // Essa linha serve para atualizar o ID
                     cont++;                            // Essa para aumentar o tamanho do novo vetor
                 }
             }
@@ -431,7 +428,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             for(int i=0; i<tamanho_registros; i++){                 // "for" PRINCIPAL da exclusão
                 if(registros[i].id<menor || registros[i].id>maior){ // Verificação se é menor que o primeiro e maior que o último
                     new_registros[cont]=registros[i];               
-                    new_registros[cont].id=cont+1;                  // Essa linha serve para atualizar o ID
                     cont++;                                         // Essa para aumentar o tamanho do novo vetor
                 }
             }
@@ -452,7 +448,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             for(int i=0; i<tamanho_registros; i++){                     // "for" PRINCIPAL da exclusão
                 if(registros[i].nome<menor || registros[i].nome>maior){ // Verificação se é menor que o primeiro e maior que o último
                     new_registros[cont]=registros[i];
-                    new_registros[cont].id=cont+1;                      // Essa linha serve para atualizar o ID
                     cont++;                                             // Essa para aumentar o tamanho do novo vetor
                 }
             }
@@ -473,7 +468,6 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             for(int i=0; i<tamanho_registros; i++){                                   // "for" PRINCIPAL da exclusão
                 if(registros[i].anoFundacao<menor || registros[i].anoFundacao>maior){ // Verificação se é menor que o primeiro e maior que o último
                     new_registros[cont]=registros[i];                                 
-                    new_registros[cont].id=cont+1;                                    // Essa linha serve para atualizar o ID
                     cont++;                                                           // Essa para aumentar o tamanho do novo vetor
                 }
             }            
@@ -487,7 +481,8 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
     
     ordenamento_crescente_id(registros,tamanho_registros); // Após finalizar a parte de exclusão, ordena novamente para IDs crescentes
                                                            // a fim de não ter perigo de prejudicar nenhuma outra lógica após
-    
+    for(int i=0; i < tamanho_registros; i++) registros[i].id = i + 1;
+                                        
     return registros; // Retorna o novo registro
 }
 
@@ -537,7 +532,7 @@ void buscarElemento(Clube *registros, int tamanho_registros){
          << "                            |    Forma sequencial:''Quero buscar do Arsenal ao Flamengo'' |" << endl
          << "                            |                                                             |" << endl
          << "                            |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
-         << "                            |   formas de exclusão                                        |" << endl
+         << "                            |   formas de itens                                           |" << endl
          << "                            |                                                             |" << endl
          << "                             ============================================================= " << endl;
 
@@ -877,11 +872,11 @@ void ordenar_e_imprimir_elementos(Clube *registros, int tamanho_registros){
     }
 
     cout << endl << endl;
-    cout << " ================================================================= " << endl
-         << "|  Seu arquivo atual está desse formato abaixo, caso              |" << endl
-         << "|  queira que seja impresso algum trecho ou registro específico,  |" << endl 
-         << "|  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
-         << " ================================================================= " << endl;
+    cout << "                              ================================================================= " << endl
+         << "                             |  Seu arquivo atual está desse formato abaixo, caso              |" << endl
+         << "                             |  queira que seja impresso algum trecho ou registro específico,  |" << endl 
+         << "                             |  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
+         << "                              ================================================================= " << endl;
 
     cout << endl << "Para iniciar a impressão digite '1': ";
     int iniciar;
