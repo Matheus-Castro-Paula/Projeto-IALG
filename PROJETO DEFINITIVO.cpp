@@ -32,6 +32,10 @@ void acentuacao(){
 return;
 }
 
+void limparBuffer(){  // Função para limpar o buffer de forma segura e curta
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+}
+
 struct Clube {
     int id;
     string nome;
@@ -216,20 +220,20 @@ Clube *inserirElemento(Clube *registros, int tamanho_registros, int aumento){
 
     for(int i=0; i<tamanho_registros; i++) new_registros[i]=registros[i]; // Passa tudo que tinha no vetor antigo pro novo
 
-    cout << "                                  ================================================= " << endl
-         << "                                 |                                                 |" << endl
-         << "                                 |   Digite cada item do registro respeitando a    |" << endl
-         << "                                 |  seguinte ordem: nome _ _ _ _ _ _ _(string)     |" << endl
-         << "                                 |                  país _ _ _ _ _ _ _(string)     |" << endl
-         << "                                 |                  ano de fundação_ _(inteiro)    |" << endl
-         << "                                 |                  descrição_ _ _ _ _(string)     |" << endl 
-         << "                                 |                                                 |" << endl
-         << "                                 |  O registro será inserido no final do arquivo   |" << endl
-         << "                                 | por exemplo, se o último era 100, esse será 101 |" << endl
-         << "                                 |                                                 |" << endl
-         << "                                  ================================================= " << endl;
+    cout << "                             ================================================= " << endl
+         << "                            |                                                 |" << endl
+         << "                            |   Digite cada item do registro respeitando a    |" << endl
+         << "                            |  seguinte ordem: nome _ _ _ _ _ _ _(string)     |" << endl
+         << "                            |                  país _ _ _ _ _ _ _(string)     |" << endl
+         << "                            |                  ano de fundação_ _(inteiro)    |" << endl
+         << "                            |                  descrição_ _ _ _ _(string)     |" << endl 
+         << "                            |                                                 |" << endl
+         << "                            |  O registro será inserido no final do arquivo   |" << endl
+         << "                            | por exemplo, se o último era 100, esse será 101 |" << endl
+         << "                            |                                                 |" << endl
+         << "                             ================================================= " << endl;
 
-    cin.ignore(numeric_limits<streamsize>::max(),'\n'); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado
+    limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado
 
     for(int i=tamanho_registros; i<new_tamanho_registros; i++){ // "For" para ler/pegar os novos registros na entrada padrão
         new_registros[i].id = i + 1;                  // Adiciona o ID usando o número de registro anterior e aumentando de 1 em 1
@@ -240,7 +244,7 @@ Clube *inserirElemento(Clube *registros, int tamanho_registros, int aumento){
         getline(cin, new_registros[i].pais);          // Pega o país
         cout << "Ano de fundação: ";                  
         cin >> new_registros[i].anoFundacao;          // Pega o ano de fundação
-        cin.ignore();                                 // Ignora a quebra de linha do "cin" anterior    
+        limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado  
         cout << "Descrição: ";                        
         getline(cin, new_registros[i].descricao);     // Pega a descrição
         cout << endl;
@@ -255,17 +259,17 @@ Clube *inserirElemento(Clube *registros, int tamanho_registros, int aumento){
 
 Clube *excluirElemento(Clube *registros, int &tamanho_registros){
 
-    cout << "                             ======================================================== " << endl
-         << "                            |                                                        |" << endl
-         << "                            |   Digite a forma de procura que será utilizado         |" << endl
-         << "                            |  para excluir os registros, por exemplo:               |" << endl
-         << "                            |                                                        |" << endl
-         << "                            |  Por ID(1), Nome(2), Ano de fundação(3)                |" << endl
-         << "                            |                                                        |" << endl
-         << "                            |  Detalhe!!! Qualquer tipo de busca, a maneira digitada |" << endl 
-         << "                            |  deve estar igual ao do registro já existente          |" << endl
-         << "                            |                                                        |" << endl
-         << "                             ======================================================== " << endl;
+    cout << "                        ======================================================== " << endl
+         << "                       |                                                        |" << endl
+         << "                       |   Digite a forma de procura que será utilizado         |" << endl
+         << "                       |  para excluir os registros, por exemplo:               |" << endl
+         << "                       |                                                        |" << endl
+         << "                       |  Por ID(1), Nome(2), Ano de fundação(3)                |" << endl
+         << "                       |                                                        |" << endl
+         << "                       |  Detalhe!!! Qualquer tipo de busca, a maneira digitada |" << endl 
+         << "                       |  deve estar igual ao do registro já existente          |" << endl
+         << "                       |                                                        |" << endl
+         << "                        ======================================================== " << endl;
 
     cout << endl << "Número do tipo da busca: ";
     short buscaExclusao; // Variavel que determinará o tipo de busca
@@ -288,18 +292,18 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             return registros; // Volta a parte inicial sem fazer nenhum alteração
     }
 
-    cout << "                             ============================================================= " << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Deseja excluir de forma unitária ou sequencial?           |" << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Por exemplo:                                              |" << endl
-         << "                            |    Forma unitária: ''Quero excluir o id 1, 24 e 83''        |" << endl
-         << "                            |    Forma sequencial: ''Quero excluir do Arsenal ao Flamengo |" << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
-         << "                            |   formas de exclusão                                        |" << endl
-         << "                            |                                                             |" << endl
-         << "                             ============================================================= " << endl;
+    cout << "                     ============================================================= " << endl
+         << "                    |                                                             |" << endl
+         << "                    |   Deseja excluir de forma unitária ou sequencial?           |" << endl
+         << "                    |                                                             |" << endl
+         << "                    |   Por exemplo:                                              |" << endl
+         << "                    |   Forma unitária: \"Quero excluir o id 1, 24 e 83\"           |" << endl
+         << "                    |   Forma sequencial: \"Quero excluir do Arsenal ao Flamengo\"  |" << endl
+         << "                    |                                                             |" << endl
+         << "                    |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
+         << "                    |   formas de exclusão                                        |" << endl
+         << "                    |                                                             |" << endl
+         << "                     ============================================================= " << endl;
 
     char formato_exclusao; // Variavel que determinara o formato da exclusão
     cout << endl;
@@ -313,8 +317,7 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
     }
 
     
-    cin.ignore(); // Limpeza de buffer
-
+    limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado
     int quantidade_excluida; // Variavel utilizada na parte unitária (declarada antes do "if" para ser utilizada sempre que necessário)
     int cont=0; // EXTREMAMENTE IMPORTANTE. Determinará o tamanho do vetor após as alterações
 
@@ -357,7 +360,7 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             cout << "\nDigite quais você deseja excluir (Não precisa ser em ordem)";
             cout << endl;
             
-            cin.ignore();  // Limpeza de buffer para ler strings (nomes) após ler a quantidade (int)
+            limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado  
 
             for(int i=0; i<quantidade_excluida; i++){ // "for" para ler os registros que serão excluidos
                 cout << "Registro " << (i+1) << ": ";
@@ -488,16 +491,16 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
 
 void buscarElemento(Clube *registros, int tamanho_registros){
 
-    cout << "                                  ======================================= " << endl
-         << "                                 |                                       |" << endl
-         << "                                 |   Digite qual o jeito desejado para   |" << endl
-         << "                                 |  buscar o registro                    |" << endl
-         << "                                 |                                       |" << endl
-         << "                                 |   Pode ser tanto por:                 |" << endl
-         << "                                 |   ID(1), Nome(2), País(3)             |" << endl
-         << "                                 |   ou Ano de Fundação(4)               |" << endl
-         << "                                 |                                       |" << endl
-         << "                                  ======================================= " << endl;
+    cout << "                             ======================================= " << endl
+         << "                            |                                       |" << endl
+         << "                            |   Digite qual o jeito desejado para   |" << endl
+         << "                            |  buscar o registro                    |" << endl
+         << "                            |                                       |" << endl
+         << "                            |   Pode ser tanto por:                 |" << endl
+         << "                            |   ID(1), Nome(2), País(3)             |" << endl
+         << "                            |   ou Ano de Fundação(4)               |" << endl
+         << "                            |                                       |" << endl
+         << "                             ======================================= " << endl;
 
     cout << endl;
     int formato;
@@ -523,18 +526,18 @@ void buscarElemento(Clube *registros, int tamanho_registros){
             return; // Volta a parte inicial sem fazer nenhum alteração
     }
 
-    cout << "                             ============================================================= " << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Deseja buscar de forma unitária ou sequencial?            |" << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Por exemplo:                                              |" << endl
-         << "                            |    Forma unitária: ''Quero buscar o id 1, 24 e 83''         |" << endl
-         << "                            |    Forma sequencial:''Quero buscar do Arsenal ao Flamengo'' |" << endl
-         << "                            |                                                             |" << endl
-         << "                            |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
-         << "                            |   formas de itens                                           |" << endl
-         << "                            |                                                             |" << endl
-         << "                             ============================================================= " << endl;
+    cout << "                   ============================================================= " << endl
+         << "                  |                                                             |" << endl
+         << "                  |   Deseja buscar de forma unitária ou sequencial?            |" << endl
+         << "                  |                                                             |" << endl
+         << "                  |   Por exemplo:                                              |" << endl
+         << "                  |    Forma unitária: \"Quero buscar o id 1, 24 e 83\"           |" << endl
+         << "                  |    Forma sequencial:\"Quero buscar do Arsenal ao Flamengo\"   |" << endl
+         << "                  |                                                             |" << endl
+         << "                  |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
+         << "                  |   formas de itens                                           |" << endl
+         << "                  |                                                             |" << endl
+         << "                   ============================================================= " << endl;
 
     char formato_busca; // Variavel que determinara o formato da exclusão
     cout << endl;
@@ -547,7 +550,7 @@ void buscarElemento(Clube *registros, int tamanho_registros){
         cin >> formato_busca;
     }
     
-    cin.ignore(); // Limpeza de buffer
+    limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado
 
     if(formato_busca=='u'){ // Faz a busca no formato unitário
         int quantidade;
@@ -559,8 +562,7 @@ void buscarElemento(Clube *registros, int tamanho_registros){
         int *vet_procura_int=new int[quantidade];           // Vetores auxiliares que guardarão os itens buscados
         string *vet_procura_string=new string[quantidade];
 
-        cin.ignore(); // Limpeza de buffer
-        
+        limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado 
         if(formato==1){ // Caso tenha escolhido buscar ID, entra aqui
             for(int i=0; i<quantidade; i++){ // "for" para pegar os itens desejados
                 cout << (i+1) << "º ID que procura: ";
@@ -608,16 +610,16 @@ void buscarElemento(Clube *registros, int tamanho_registros){
         }
     }else if(formato_busca=='s'){
         cout << endl;
-        cout << "                             ======================================================================== " << endl
-             << "                            |  Deseja que os registros sejam impressos na ordem crescente de IDs(1)  |" << endl
-             << "                            |  ou na ordem crescente/alfabética da sua determinada escolha(2)?       |" << endl
-             << "                             ======================================================================== " << endl;
+        cout << "                     ======================================================================== " << endl
+             << "                    |  Deseja que os registros sejam impressos na ordem crescente de IDs(1)  |" << endl
+             << "                    |  ou na ordem crescente/alfabética da sua determinada escolha(2)?       |" << endl
+             << "                     ======================================================================== " << endl;
 
         cout << "\nFormato de impressão desejado: ";
         int impressao;
         cin >> impressao;
 
-        cin.ignore();
+        limparBuffer(); // Para ignorar qualquer quebra de linha anterior ou qualquer conteúdo indesejado
 
         if(impressao==1) ordenamento_crescente_id(registros,tamanho_registros); // Caso a pessoa tenha escolhido imprimir na ordem
                                                                                 //  crescente de IDs, aqui já vai ordenar em formato de ID
@@ -838,16 +840,16 @@ void salvarBinario(Clube *registros, int tamanho_registros){
 }
 
 void ordenar_e_imprimir_elementos(Clube *registros, int tamanho_registros){
-    cout << "                                  ================================= " << endl
-         << "                                 |                                 |" << endl
-         << "                                 |   Digite de qual jeito deseja   |" << endl
-         << "                                 |   ordernar os registros         |" << endl
-         << "                                 |   (ordem crescente/alfabética)  |" << endl
-         << "                                 |                                 |" << endl
-         << "                                 |   ID(1), Nome(2), País(3)       |" << endl
-         << "                                 |   ou Ano de Fundação(4)         |" << endl
-         << "                                 |                                 |" << endl
-         << "                                  ================================= " << endl;
+    cout << "                             ================================= " << endl
+         << "                            |                                 |" << endl
+         << "                            |   Digite de qual jeito deseja   |" << endl
+         << "                            |   ordernar os registros         |" << endl
+         << "                            |   (ordem crescente/alfabética)  |" << endl
+         << "                            |                                 |" << endl
+         << "                            |   ID(1), Nome(2), País(3)       |" << endl
+         << "                            |   ou Ano de Fundação(4)         |" << endl
+         << "                            |                                 |" << endl
+         << "                             ================================= " << endl;
 
     cout << "\n\nOrdenamento desejado: ";
     int ordenamento;
@@ -872,11 +874,11 @@ void ordenar_e_imprimir_elementos(Clube *registros, int tamanho_registros){
     }
 
     cout << endl << endl;
-    cout << "                              ================================================================= " << endl
-         << "                             |  Seu arquivo atual está desse formato abaixo, caso              |" << endl
-         << "                             |  queira que seja impresso algum trecho ou registro específico,  |" << endl 
-         << "                             |  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
-         << "                              ================================================================= " << endl;
+    cout << "                    ================================================================= " << endl
+         << "                   |  Seu arquivo atual está desse formato abaixo, caso              |" << endl
+         << "                   |  queira que seja impresso algum trecho ou registro específico,  |" << endl 
+         << "                   |  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
+         << "                    ================================================================= " << endl;
 
     cout << endl << "Para iniciar a impressão digite '1': ";
     int iniciar;
@@ -921,16 +923,16 @@ int main() {
     do{
         
         cout << endl;
-        cout << "                                  ================================================= " << endl
-             << "                                 |                                                 |" << endl
-             << "                                 |  Digite 1 para inserir um novo elemento         |" << endl
-             << "                                 |  Digite 2 para remover algum registro           |" << endl
-             << "                                 |  Digite 3 para buscar algum registro            |" << endl
-             << "                                 |  Digite 4 para ordenar e imprimir os registros  |" << endl
-             << "                                 |                                                 |" << endl
-             << "                                 |  Digite -1 para finalizar                       |" << endl
-             << "                                 |                                                 |" << endl
-             << "                                  ================================================= " << endl;
+        cout << "                          ================================================= " << endl
+             << "                         |                                                 |" << endl
+             << "                         |  Digite 1 para inserir um novo elemento         |" << endl
+             << "                         |  Digite 2 para remover algum registro           |" << endl
+             << "                         |  Digite 3 para buscar algum registro            |" << endl
+             << "                         |  Digite 4 para ordenar e imprimir os registros  |" << endl
+             << "                         |                                                 |" << endl
+             << "                         |  Digite -1 para finalizar                       |" << endl
+             << "                         |                                                 |" << endl
+             << "                          ================================================= " << endl;
 
         cout << endl << "Opção escolhida: ";
         cin >> numSwitch; // Número que será digitado pelo usuário 
@@ -944,13 +946,13 @@ int main() {
                     cout << "________________________________________________________________________________________________________________________";
                     cout << endl;
                     cout << endl;
-                    cout << "                                  ================================================= " << endl
-                         << "                                 |                                                 |" << endl
-                         << "                                 |   Digite a quantidade de registros que serão    |" << endl
-                         << "                                 |  adicionados ao sistema (cada registro          |" << endl
-                         << "                                 |  contém 5 itens)                                |" << endl
-                         << "                                 |                                                 |" << endl
-                         << "                                  ================================================= " << endl;
+                    cout << "                          ================================================= " << endl
+                         << "                         |                                                 |" << endl
+                         << "                         |   Digite a quantidade de registros que serão    |" << endl
+                         << "                         |  adicionados ao sistema (cada registro          |" << endl
+                         << "                         |  contém 5 itens)                                |" << endl
+                         << "                         |                                                 |" << endl
+                         << "                          ================================================= " << endl;
                     int aumento; // Quantidade de registros que será adicionado
                     cout << endl << "Quantidade que será adicionada: ";
                     cin >> aumento;
@@ -1044,16 +1046,16 @@ int main() {
 
     }while(numSwitch!=-1);
 
-    cout << endl << "                                  ============================================ " << endl
-                 << "                                 |                                            |" << endl
-                 << "                                 |  Com todas as funções já finalizadas, seu  |" << endl
-                 << "                                 |  novo arquivo CSV e Binário serão criados  |" << endl
-                 << "                                 |  com suas alterações realizadas, os nomes  |" << endl
-                 << "                                 |  dos novos arquivos são:                   |" << endl
-                 << "                                 |    ''New Banco de Dados.csv''              |" << endl
-                 << "                                 |    ''Banco de dados.bin''                  |" << endl
-                 << "                                 |                                            |" << endl
-                 << "                                  ============================================ " << endl;
+    cout << endl << "                            ============================================ " << endl
+                 << "                           |                                            |" << endl
+                 << "                           |  Com todas as funções já finalizadas, seu  |" << endl
+                 << "                           |  novo arquivo CSV e Binário serão criados  |" << endl
+                 << "                           |  com suas alterações realizadas, os nomes  |" << endl
+                 << "                           |  dos novos arquivos são:                   |" << endl
+                 << "                           |     \"New Banco de Dados.csv\"               |" << endl
+                 << "                           |     \"Banco de dados.bin\"                   |" << endl
+                 << "                           |                                            |" << endl
+                 << "                            ============================================ " << endl;
 
     ofstream newBanco("New Banco de Dados.csv"); // Banco de Dados todo atualizado após as alterações
 
