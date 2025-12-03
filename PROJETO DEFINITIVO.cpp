@@ -1,3 +1,15 @@
+/*
+
+    Projeto Realizado por:
+        Carolina Carvalho Maurício Silva
+        Kauã Augusto Canaan Nascimento
+        Matheus de Castro Paula
+
+    Com o tema sendo:
+        Os 100 Melhores Clubes de Futebol Atualmente
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -259,17 +271,17 @@ Clube *inserirElemento(Clube *registros, int tamanho_registros, int aumento){
 
 Clube *excluirElemento(Clube *registros, int &tamanho_registros){
 
-    cout << "                        ======================================================== " << endl
-         << "                       |                                                        |" << endl
-         << "                       |   Digite a forma de procura que será utilizado         |" << endl
-         << "                       |  para excluir os registros, por exemplo:               |" << endl
-         << "                       |                                                        |" << endl
-         << "                       |  Por ID(1), Nome(2), Ano de fundação(3)                |" << endl
-         << "                       |                                                        |" << endl
-         << "                       |  Detalhe!!! Qualquer tipo de busca, a maneira digitada |" << endl 
-         << "                       |  deve estar igual ao do registro já existente          |" << endl
-         << "                       |                                                        |" << endl
-         << "                        ======================================================== " << endl;
+    cout << "                      ======================================================== " << endl
+         << "                     |                                                        |" << endl
+         << "                     |   Digite a forma de procura que será utilizado         |" << endl
+         << "                     |  para excluir os registros, por exemplo:               |" << endl
+         << "                     |                                                        |" << endl
+         << "                     |  Por ID(1), Nome(2), Ano de fundação(3)                |" << endl
+         << "                     |                                                        |" << endl
+         << "                     |  Detalhe!!! Qualquer tipo de busca, a maneira digitada |" << endl 
+         << "                     |  deve estar igual ao do registro já existente          |" << endl
+         << "                     |                                                        |" << endl
+         << "                      ======================================================== " << endl;
 
     cout << endl << "Número do tipo da busca: ";
     short buscaExclusao; // Variavel que determinará o tipo de busca
@@ -292,18 +304,18 @@ Clube *excluirElemento(Clube *registros, int &tamanho_registros){
             return registros; // Volta a parte inicial sem fazer nenhum alteração
     }
 
-    cout << "                     ============================================================= " << endl
-         << "                    |                                                             |" << endl
-         << "                    |   Deseja excluir de forma unitária ou sequencial?           |" << endl
-         << "                    |                                                             |" << endl
-         << "                    |   Por exemplo:                                              |" << endl
-         << "                    |   Forma unitária: \"Quero excluir o id 1, 24 e 83\"           |" << endl
-         << "                    |   Forma sequencial: \"Quero excluir do Arsenal ao Flamengo\"  |" << endl
-         << "                    |                                                             |" << endl
-         << "                    |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
-         << "                    |   formas de exclusão                                        |" << endl
-         << "                    |                                                             |" << endl
-         << "                     ============================================================= " << endl;
+    cout << "                ============================================================= " << endl
+         << "               |                                                             |" << endl
+         << "               |   Deseja excluir de forma unitária ou sequencial?           |" << endl
+         << "               |                                                             |" << endl
+         << "               |   Por exemplo:                                              |" << endl
+         << "               |   Forma unitária: \"Quero excluir o id 1, 24 e 83\"           |" << endl
+         << "               |   Forma sequencial: \"Quero excluir do Arsenal ao Flamengo\"  |" << endl
+         << "               |                                                             |" << endl
+         << "               |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
+         << "               |   formas de exclusão                                        |" << endl
+         << "               |                                                             |" << endl
+         << "                ============================================================= " << endl;
 
     char formato_exclusao; // Variavel que determinara o formato da exclusão
     cout << endl;
@@ -526,18 +538,18 @@ void buscarElemento(Clube *registros, int tamanho_registros){
             return; // Volta a parte inicial sem fazer nenhum alteração
     }
 
-    cout << "                   ============================================================= " << endl
-         << "                  |                                                             |" << endl
-         << "                  |   Deseja buscar de forma unitária ou sequencial?            |" << endl
-         << "                  |                                                             |" << endl
-         << "                  |   Por exemplo:                                              |" << endl
-         << "                  |    Forma unitária: \"Quero buscar o id 1, 24 e 83\"           |" << endl
-         << "                  |    Forma sequencial:\"Quero buscar do Arsenal ao Flamengo\"   |" << endl
-         << "                  |                                                             |" << endl
-         << "                  |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
-         << "                  |   formas de itens                                           |" << endl
-         << "                  |                                                             |" << endl
-         << "                   ============================================================= " << endl;
+    cout << "                ============================================================= " << endl
+         << "               |                                                             |" << endl
+         << "               |   Deseja buscar de forma unitária ou sequencial?            |" << endl
+         << "               |                                                             |" << endl
+         << "               |   Por exemplo:                                              |" << endl
+         << "               |    Forma unitária: \"Quero buscar o id 1, 24 e 83\"           |" << endl
+         << "               |    Forma sequencial:\"Quero buscar do Arsenal ao Flamengo\"   |" << endl
+         << "               |                                                             |" << endl
+         << "               |   Lembrando que qualquer formato de busca aceita todas as   |" << endl
+         << "               |   formas de itens                                           |" << endl
+         << "               |                                                             |" << endl
+         << "                ============================================================= " << endl;
 
     char formato_busca; // Variavel que determinara o formato da exclusão
     cout << endl;
@@ -610,10 +622,10 @@ void buscarElemento(Clube *registros, int tamanho_registros){
         }
     }else if(formato_busca=='s'){
         cout << endl;
-        cout << "                     ======================================================================== " << endl
-             << "                    |  Deseja que os registros sejam impressos na ordem crescente de IDs(1)  |" << endl
-             << "                    |  ou na ordem crescente/alfabética da sua determinada escolha(2)?       |" << endl
-             << "                     ======================================================================== " << endl;
+        cout << "      ======================================================================== " << endl
+             << "     |  Deseja que os registros sejam impressos na ordem crescente de IDs(1)  |" << endl
+             << "     |  ou na ordem crescente/alfabética da sua determinada escolha(2)?       |" << endl
+             << "      ======================================================================== " << endl;
 
         cout << "\nFormato de impressão desejado: ";
         int impressao;
@@ -874,11 +886,11 @@ void ordenar_e_imprimir_elementos(Clube *registros, int tamanho_registros){
     }
 
     cout << endl << endl;
-    cout << "                    ================================================================= " << endl
-         << "                   |  Seu arquivo atual está desse formato abaixo, caso              |" << endl
-         << "                   |  queira que seja impresso algum trecho ou registro específico,  |" << endl 
-         << "                   |  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
-         << "                    ================================================================= " << endl;
+    cout << "             ================================================================= " << endl
+         << "            |  Seu arquivo atual está desse formato abaixo, caso              |" << endl
+         << "            |  queira que seja impresso algum trecho ou registro específico,  |" << endl 
+         << "            |  entre na opção 3 do menu principal (Burscar Elemento)          |" << endl
+         << "             ================================================================= " << endl;
 
     cout << endl << "Para iniciar a impressão digite '1': ";
     int iniciar;
@@ -943,7 +955,7 @@ int main() {
 
                     cout << endl;
                     // Linha do tamanho exato do terminal (apenas estético)
-                    cout << "________________________________________________________________________________________________________________________";
+                    cout << "________________________________________________________________________________";
                     cout << endl;
                     cout << endl;
                     cout << "                          ================================================= " << endl
@@ -980,7 +992,7 @@ int main() {
                 do{
                     cout << endl;
                     // Linha do tamanho exato do terminal (apenas estético)
-                    cout << "________________________________________________________________________________________________________________________";
+                    cout << "________________________________________________________________________________";
                     cout << endl;
                     cout << endl;
                     registros = excluirElemento(registros,tamanho_registros); // Chamando a Função de exclusão
@@ -1001,7 +1013,7 @@ int main() {
                 do{
                     cout << endl;
                     // Linha do tamanho exato do terminal (apenas estético)
-                    cout << "________________________________________________________________________________________________________________________";
+                    cout << "________________________________________________________________________________";
                     cout << endl;
                     cout << endl;
                     buscarElemento(registros,tamanho_registros); // Chamando a Função de busca
@@ -1022,7 +1034,7 @@ int main() {
                 do{
                     cout << endl;
                     // Linha do tamanho exato do terminal (apenas estético)
-                    cout << "________________________________________________________________________________________________________________________";
+                    cout << "________________________________________________________________________________";
                     cout << endl;
                     cout << endl;
                     ordenar_e_imprimir_elementos(registros,tamanho_registros); // Chamando a Função de ordenação e impressão
@@ -1041,7 +1053,7 @@ int main() {
         }
         
         cout << endl;
-        cout << "________________________________________________________________________________________________________________________";
+        cout << "________________________________________________________________________________";
         cout << endl;
 
     }while(numSwitch!=-1);
