@@ -1057,6 +1057,38 @@ int main() {
         cout << endl;
 
     }while(numSwitch!=-1);
+    
+    cout << endl << endl;
+    cout << "             ==================================================== " << endl
+         << "            |  Deseja salvar seu arquivo utilizando qual ordem?  |" << endl
+         << "            |  Crescente por ID(1), Alfabética por Nome(2),      |" << endl 
+         << "            |  Alfabética por País(3), Crescente por Ano(4)      |" << endl
+         << "             ==================================================== " << endl;
+
+    int salvar_arquivo;
+
+    do{
+        cout << "\n\nFormato desejado:  ";
+        cin >> salvar_arquivo;
+
+        switch(salvar_arquivo){
+            case 1:
+                ordenamento_crescente_id(registros,tamanho_registros);
+                break;
+            case 2:
+                ordenamento_crescente_nome(registros,tamanho_registros);
+                break;
+            case 3:
+                ordenamento_crescente_pais(registros,tamanho_registros);
+                break;
+            case 4:
+                ordenamento_crescente_ano(registros,tamanho_registros);
+                break;
+            default:
+                cout << "\n\nO Numeral digitado não corresponde a nenhuma das opções. Tente novamente!";
+                break;
+        }
+    }while(salvar_arquivo<1 && salvar_arquivo>4);
 
     cout << endl << "                            ============================================ " << endl
                  << "                           |                                            |" << endl
